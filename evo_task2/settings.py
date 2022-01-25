@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'home_page',
 ]
 
 MIDDLEWARE = [
@@ -72,12 +73,23 @@ WSGI_APPLICATION = 'evo_task2.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'default': {
+            'ENGINE': 'djongo',
+            'NAME': 'evo_db2',
+            'ENFORCE_SCHEMA': False,
+            'CLIENT': {
+                'host': 'mongodb+srv://user:user1234@cluster0.xk2yj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+            }
+        }
 }
 
 
