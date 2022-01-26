@@ -1,18 +1,47 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Регистрация</title>
-
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
 </head>
 <body>
-    <h2>Регистрация</h2>
-    <form method="post" action="/home_page/register">
-        {% csrf_token %}
-        {{ user_form.as_p }}
-        <button type="submit">Регистрация</button>
-    </form>
+<!--    <h2>Регистрация</h2>-->
+<!--    <form method="post" action="/home_page/register">-->
+<!--        {% csrf_token %}-->
+<!--        {{ user_form.as_p }}-->
+<!--        <button type="submit">Регистрация</button>-->
+<!--    </form>-->
 
+
+    <main>
+        <div class="circle"></div>
+        <div class="register-form-container">
+            <form method="post" action="/home_page/register">
+                {% csrf_token %}
+                <h1 class="form-title">
+                    Напиши своё имя
+                </h1>
+                <div class="form-fields">
+                    <div class="form-field">
+                        {{ user_form.first_name }}
+                    </div>
+                    <div class="form-field">
+                        {{ user_form.second_name }}
+                    </div>
+                    <div class="form-field">
+                        {{ user_form.email }}
+                    </div>
+                </div>
+                <div class="form-buttons">
+                    <button class="button" type="submit">Поздороваться</button>
+                    <div class="divider">или</div>
+                    <a href="{% url 'home' %}" class="button button-google">Список с кем поздоровались</a>
+                </div>
+            </form>
+        </div>
+    </main>
 
 </body>
 </html>

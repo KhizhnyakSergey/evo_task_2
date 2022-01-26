@@ -6,7 +6,7 @@
 body {
     font-family: 'Roboto', sans-serif;
 }
-input {
+#id_first_name, #id_second_name, #id_email {
     height: 45px;
     width: 100%;
     color: #3B5983;

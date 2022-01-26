@@ -8,4 +8,6 @@ class User(models.Model):
     first_name = models.CharField(max_length=20)
     second_name = models.CharField(max_length=20)
 
+    # def __str__(self):
+    #     return self.email
 

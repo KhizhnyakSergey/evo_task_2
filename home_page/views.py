@@ -25,5 +25,5 @@ class UserFormView(View):
 
 def home(request):
     user_form = UserForm()
-    users = User.objects.all()
+    users = User.objects.order_by('first_name')
     return render(request, 'home_page/home.html', context={'user_form': user_form, 'users': users})
