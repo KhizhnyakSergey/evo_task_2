@@ -6,6 +6,7 @@ The first thing to do is to clone the repository:
 
 ```sh
 $ git clone https://github.com/KhizhnyakSergey/evo_task_2.git
+$ cd evo_task_2
 ```
 
 Create a virtual environment to install dependencies in and activate it:
