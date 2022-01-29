@@ -26,10 +26,10 @@ session operates in a virtual environment set up by `venv`.
 
 Once `pip` has finished downloading the dependencies:
 ```sh
-(venv_evo)$ cd evo_task_2
 (venv_evo)$ python manage.py runserver
 ```
 And navigate to `http://127.0.0.1:8000/`.
+
 
 ## Task
 
