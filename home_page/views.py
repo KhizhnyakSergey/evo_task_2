@@ -25,15 +25,15 @@ class UserFormView(View):
                 g = User.objects.filter(email__contains=email).all()
                 if str(g.get()) == request.POST['email']:
                     email_err = request.POST['email']
-                    print('Уже виделись, ', email, email_err)
+                    # print('Уже виделись, ', email, email_err)
             except User.DoesNotExist:
                 User.objects.create(**user_form.cleaned_data)
                 email_add = request.POST['email']
-                print('Привет, ', email_add)
+                # print('Привет, ', email_add)
             except ObjectDoesNotExist:
                 User.objects.create(**user_form.cleaned_data)
                 email_add = request.POST['email']
-                print('Привет, ', email_add)
+                # print('Привет, ', email_add)
 
             # return HttpResponseRedirect('/')
         return render(request, 'home_page/register.html',
@@ -50,4 +50,3 @@ def check(request):
                   context={'users': users,
                            'count_user': count_user,
                            'reverse_user': reverse_user})
-
