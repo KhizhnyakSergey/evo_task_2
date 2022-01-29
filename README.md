@@ -26,10 +26,24 @@ session operates in a virtual environment set up by `venv`.
 
 Once `pip` has finished downloading the dependencies:
 ```sh
+(venv_evo)$ python manage.py createsuperuser
+Username: admin
+Email address:
+Password:(Create a password)
+Password (again):
+The password is too similar to the username.
+This password is too short. It must contain at least 8 characters.
+This password is too common.
+Bypass password validation and create user anyway? [y/N]: y
+Superuser created successfully.
+```
+
+```sh
 (venv_evo)$ python manage.py runserver
 ```
 And navigate to `http://127.0.0.1:8000/`.
 
+To enter the Admin panel use http://127.0.0.1:8000/admin/.
 
 ## Task
 
