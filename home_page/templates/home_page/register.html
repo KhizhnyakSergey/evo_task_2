@@ -7,28 +7,38 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
 </head>
 <body>
-<!--    <h2>Регистрация</h2>-->
-<!--    <form method="post" action="/home_page/register">-->
-<!--        {% csrf_token %}-->
-<!--        {{ user_form.as_p }}-->
-<!--        <button type="submit">Регистрация</button>-->
-<!--    </form>-->
-
     <main>
         <div class="circle"></div>
         <div class="register-form-container">
-            <form method="post" action="{% url 'register' %}">
+            <form method="post" action="{% url 'home' %}">
                 {% csrf_token %}
+
+                {% if email_add %}
+                <h1 class="form-title">
+                    Привет, {{ email_add }}
+                </h1>
+                <div class="form-buttons">
+<!--                    <button class="button" type="submit">Назад</button>-->
+                    <a href="{% url 'home' %}" class="button">Назад</a>
+                    <div class="divider">или</div>
+                    <a href="{% url 'check' %}" class="button button-google">Список с кем поздоровались</a>
+                </div>
+
+                {% elif email_err %}
+                <h1 class="form-title">
+                    Уже виделись, {{ email_err }}
+                </h1>
+                <div class="form-buttons">
+                     <a href="{% url 'home' %}" class="button">Назад</a>
+                    <div class="divider">или</div>
+                    <a href="{% url 'check' %}" class="button button-google">Список с кем поздоровались</a>
+                </div>
+
+                    {% else  %}
                 <h1 class="form-title">
                     Введите данные
                 </h1>
                 <div class="form-fields">
-                    <div class="form-field">
-                        {{ user_form.first_name }}
-                    </div>
-                    <div class="form-field">
-                        {{ user_form.second_name }}
-                    </div>
                     <div class="form-field">
                         {{ user_form.email }}
                     </div>
@@ -36,8 +46,9 @@
                 <div class="form-buttons">
                     <button class="button" type="submit">Поздороваться</button>
                     <div class="divider">или</div>
-                    <a href="{% url 'home' %}" class="button button-google">Список с кем поздоровались</a>
+                    <a href="{% url 'check' %}" class="button button-google">Список с кем поздоровались</a>
                 </div>
+                {% endif %}
             </form>
         </div>
     </main>

@@ -7,30 +7,25 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
 </head>
 <body>
-
-<!--  hello world-->
-<!--    {% for user in users %}-->
-<!--    <br>{{ user.email }} {{ user.first_name }} {{ user.second_name }}-->
-<!--    {% endfor %}-->
-
     <main>
         <div class="circle"></div>
         <div class="register-form-container">
-            <form method="post" action="/home_page/register">
+            <form method="post" action="home">
                 {% csrf_token %}
                 <h1 class="form-title2">
-                     С кем поздоровались
+                     Всего пользователей {{ count_user }}
                 </h1>
                 <div class="form-fields">
                     <div class="form-field2">
-                        {% for user in users %}
-                        <br>{{ user.email }} {{ user.first_name }} {{ user.second_name }}
+                        <p>Последние с кем поздоровались:</p>
+                        {% for user in reverse_user %}
+                        <br>{{ user.email }}
                         {% endfor %}
                     </div>
 
                 </div>
                 <div class="form-buttons">
-                    <a href="{% url 'register' %}" class="button button-google">Назад</a>
+                    <a href="{% url 'home' %}" class="button button-google">Назад</a>
                 </div>
             </form>
         </div>
