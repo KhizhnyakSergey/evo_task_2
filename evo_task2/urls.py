@@ -21,5 +21,5 @@ from home_page import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
-    path('home_page/register', UserFormView.as_view()),
+    path('home_page/register', UserFormView.as_view(), name='register'),
 ]

@@ -8,6 +8,10 @@ class User(models.Model):
     first_name = models.CharField(max_length=20)
     second_name = models.CharField(max_length=20)
 
-    # def __str__(self):
-    #     return self.email
+    def __str__(self):
+        return self.email
+
+    class Meta:
+        verbose_name = 'Пользователь'
+        verbose_name_plural = 'Пользователи'
 

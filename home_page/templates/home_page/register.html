@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Регистрация</title>
+    <title>Главная</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
 </head>
 <body>
@@ -14,14 +14,13 @@
 <!--        <button type="submit">Регистрация</button>-->
 <!--    </form>-->
 
-
     <main>
         <div class="circle"></div>
         <div class="register-form-container">
-            <form method="post" action="/home_page/register">
+            <form method="post" action="{% url 'register' %}">
                 {% csrf_token %}
                 <h1 class="form-title">
-                    Напиши своё имя
+                    Введите данные
                 </h1>
                 <div class="form-fields">
                     <div class="form-field">

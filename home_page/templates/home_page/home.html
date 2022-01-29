@@ -1,15 +1,40 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
 </head>
 <body>
 
-  hello world
-    {% for user in users %}
-    <br>{{ user.email }} {{ user.first_name }} {{ user.second_name }}
-    {% endfor %}
+<!--  hello world-->
+<!--    {% for user in users %}-->
+<!--    <br>{{ user.email }} {{ user.first_name }} {{ user.second_name }}-->
+<!--    {% endfor %}-->
+
+    <main>
+        <div class="circle"></div>
+        <div class="register-form-container">
+            <form method="post" action="/home_page/register">
+                {% csrf_token %}
+                <h1 class="form-title2">
+                     С кем поздоровались
+                </h1>
+                <div class="form-fields">
+                    <div class="form-field2">
+                        {% for user in users %}
+                        <br>{{ user.email }} {{ user.first_name }} {{ user.second_name }}
+                        {% endfor %}
+                    </div>
+
+                </div>
+                <div class="form-buttons">
+                    <a href="{% url 'register' %}" class="button button-google">Назад</a>
+                </div>
+            </form>
+        </div>
+    </main>
 
 </body>
 </html>

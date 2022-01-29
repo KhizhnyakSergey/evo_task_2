@@ -14,19 +14,19 @@ body {
     line-height: 16px;
     border: 2px solid #E9F2FF;
     border-radius: 5px;
-    padding-left: 25px;
+    padding-left: 13px;
 }
-input:focus {
+#id_first_name:focus, #id_second_name:focus, #id_email:focus {
     outline: none;
     border: 2px solid #C1D9FD;
 }
-input:valid {
+#id_first_name:valid, #id_second_name:valid, #id_email:valid {
     border-color: greenyellow;
 }
-input:invalid {
+#id_first_name:invalid, #id_second_name:invalid, #id_email:invalid {
     border-color: orange;
 }
-input:not(:focus):invalid {
+#id_first_name:not(:focus):invalid, #id_second_name:not(:focus):invalid , #id_email:not(:focus):invalid {
     border-color: #C1D9FD;
 }
 main {
@@ -116,10 +116,19 @@ main {
     font-weight: 500;
     font-size: 20px;
     line-height: 23px;
-    margin-bottom: 38px;
+    margin-bottom: 13px;
+}
+.form-title2 {
+    color: #30507D;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
 }
 .form-field {
     margin-bottom: 13px;
+}
+.form-field2 {
+    margin-bottom: 20px;
 }
 .button {
     width: 100%;
@@ -156,6 +165,6 @@ a.button {
     line-height: 14px;
     color: #405D87;
     text-align: center;
-    padding-top: 25px;
-    padding-bottom: 25px;
+    padding-top: 16px;
+    padding-bottom: 16px;
 }
