@@ -13,7 +13,7 @@ Create a virtual environment to install dependencies in and activate it:
 
 ```sh
 $ python -m venv venv_evo
-$ venv_evo/Scripts/activate.bat
+$ venv_evo\Scripts\activate
 ```
 
 Then install the dependencies:
