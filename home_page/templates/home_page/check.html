@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
 </head>
 
@@ -14,12 +16,12 @@
             <form method="post" action="home">
                 {% csrf_token %}
                 <h1 class="form-title2">
-                     Всего пользователей {{ count_user }}
+                    Всего пользователей {{ count_user }}
                 </h1>
                 <div class="form-fields">
-                    <div class="form-field2">
-                        <p>Последние с кем поздоровались:</p>
-                        {% for user in reverse_user %}
+                    <div class="form-field">
+                        <p style="margin-bottom: -1rem;">Последние с кем поздоровались:</p>
+                        {% for user in users %}
                         <br>{{ user.email }}
                         {% endfor %}
                     </div>
@@ -29,7 +31,47 @@
                     <a href="{% url 'home' %}" class="button button-google">Назад</a>
                 </div>
             </form>
+
+            <nav style="margin-top: 18px;">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item
+                    {% if not users.has_previous %} disabled {% endif %}">
+                        <a class="page-link"
+                            href="{% if users.has_previous %} {% url 'check' users.previous_page_number %} {% else %} # {% endif %}"
+                            tabindex="-1" aria-disabled="true">
+                            Предыдущая
+                        </a>
+                    </li>
+                    {% for page in users.paginator.page_range %}
+                        <li class="page-item">
+                            {% if page == users.number %}
+                            <a class="page-link" style="color:white; background-color:#343a40; font-weight:500" href="{% url 'check' page %}">
+                                {{ page }}
+                            </a>
+                            {% else %}
+                            <a class="page-link" href="{% url 'check' page %}">
+                                {{ page }}
+                            </a>
+                            {% endif %}
+                        </li>
+
+                    {% endfor %}
+                    <li class="page-item {% if not users.has_next %} disabled {% endif %}">
+                        <a class="page-link"
+                            href="{% if users.has_next %} {% url 'check' users.next_page_number %} {% else %} # {% endif %}">
+                            Следующая
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
         </div>
     </main>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 </body>
+
 </html>

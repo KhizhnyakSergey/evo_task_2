@@ -20,6 +20,6 @@ from home_page import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('check', views.check, name='check'),
+    path('check/<int:page>/', views.check, name='check'),
     path('', UserFormView.as_view(), name='home'),
 ]

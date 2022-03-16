@@ -1,10 +1,9 @@
-from django.core.exceptions import ObjectDoesNotExist
-from django.http import HttpResponseRedirect
 from mongoengine import DoesNotExist
 from django.shortcuts import render
 from home_page.forms import UserForm
 from django.views import View
 from home_page.models import User
+from django.core.paginator import Paginator
 # Create your views here.
 
 
@@ -20,6 +19,7 @@ class UserFormView(View):
         email_err = None
         email = request.POST['email']
 
+
         if user_form.is_valid():
             try:
                 g = User.objects.filter(email__contains=email).all()
@@ -30,23 +30,18 @@ class UserFormView(View):
                 User.objects.create(**user_form.cleaned_data)
                 email_add = request.POST['email']
                 # print('Привет, ', email_add)
-            except ObjectDoesNotExist:
-                User.objects.create(**user_form.cleaned_data)
-                email_add = request.POST['email']
-                # print('Привет, ', email_add)
-
+            
             # return HttpResponseRedirect('/')
         return render(request, 'home_page/register.html',
-                      context={'user_form': user_form,
-                               'email_add': email_add,
-                               'email_err': email_err})
+                        context={'user_form': user_form,
+                                'email_add': email_add,
+                                'email_err': email_err})
 
 
-def check(request):
-    users = User.objects.all()[::-1]
-    reverse_user = users[:15]
+def check(request, page = 1):
+    users = User.objects.order_by('-created')
     count_user = User.objects.count()
+    paginator = Paginator(users, 10)
+    users_paginator = paginator.page(page)
     return render(request, 'home_page/check.html',
-                  context={'users': users,
-                           'count_user': count_user,
-                           'reverse_user': reverse_user})
+                context={'users': users_paginator, 'count_user': count_user})

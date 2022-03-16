@@ -21,7 +21,7 @@
 <!--                    <button class="button" type="submit">Назад</button>-->
                     <a href="{% url 'home' %}" class="button">Назад</a>
                     <div class="divider">или</div>
-                    <a href="{% url 'check' %}" class="button button-google">Список с кем поздоровались</a>
+                    <a href="{% url 'check' page=1 %}" class="button button-google">Список с кем поздоровались</a>
                 </div>
 
                 {% elif email_err %}
@@ -29,9 +29,9 @@
                     Уже виделись, {{ email_err }}
                 </h1>
                 <div class="form-buttons">
-                     <a href="{% url 'home' %}" class="button">Назад</a>
+                    <a href="{% url 'home' %}" class="button">Назад</a>
                     <div class="divider">или</div>
-                    <a href="{% url 'check' %}" class="button button-google">Список с кем поздоровались</a>
+                    <a href="{% url 'check' page=1 %}" class="button button-google">Список с кем поздоровались</a>
                 </div>
 
                     {% else  %}
@@ -46,7 +46,7 @@
                 <div class="form-buttons">
                     <button class="button" type="submit">Поздороваться</button>
                     <div class="divider">или</div>
-                    <a href="{% url 'check' %}" class="button button-google">Список с кем поздоровались</a>
+                    <a href="{% url 'check' page=1 %}" class="button button-google">Список с кем поздоровались</a>
                 </div>
                 {% endif %}
             </form>
